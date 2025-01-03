@@ -6,9 +6,9 @@
 .pnp.js
 
 
-# Environment variable files
-.env
-.env.*.local
+# Ignore .env in codebridge/server folder
+server/.env
+
 
 # testing
 /coverage
