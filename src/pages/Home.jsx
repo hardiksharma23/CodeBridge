@@ -12,7 +12,7 @@ const Home = () => {
   return (
     <div className='pt-16'>
       {/* Hero section */}
-      <div className='flex flex-col mt-5 relative mx-auto items-center'>
+      <div className='flex flex-col mt-11 relative mx-auto items-center'>
 
         <div className='flex absolute left-72 top-10 border-2 bg-white p-2 rounded-lg shadow-2xl shadow-slate-50'>
           <img src={nextjs} alt="nextjs" width={50} />
