@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Computer from '../components/canvas/Computer'
 import { Link } from 'react-router-dom'
 import nextjs from '../assets/nextjs.svg'
@@ -7,8 +7,31 @@ import python from '../assets/file-type-python.svg'
 import mongodb from '../assets/mongodb-original-wordmark.svg'
 import nodejs from '../assets/nodejs.svg'
 import android from '../assets/android-os.svg'
+import { apiConnector } from '../services/apiConnector'
+import { categories } from '../services/apis'
 
 const Home = () => {
+
+  // category function
+  const [subLinks, setSubLinks] = useState([]);
+
+  const fetchcategories = async() => {
+    try {
+      const result = await apiConnector("GET", categories.CATEGORIES_API);
+      console.log("printing the sublinks result:", result);
+      setSubLinks(result.data.allTags);
+    }
+    catch(error) {
+      console.log("Could not fetch the category links")
+    }
+  }
+
+  useEffect( () => {
+    fetchcategories();
+  },[] )
+
+
+
   return (
     <div className='pt-16'>
       {/* Hero section */}
@@ -73,8 +96,25 @@ const Home = () => {
       </div>
 
       {/* section 2 */}
-      <div>
-        
+      <div className='flex flex-col items-center justify-center mt-12 mb-12'>
+
+        {/* category */}
+        <div className=' flex items-center justify-center font-serif text-4xl text-white border-2 font-semibold leading-snug text-center pt-2 mb-2 p-4 rounded-xl'>
+          Catagory  
+        </div> 
+        <div className='text-white'>
+          {subLinks && subLinks.length > 0 ? (
+            subLinks.map((category) => (
+              <div key={category._id} className="category-item">
+                <h3>{category.name}</h3>
+                <p>{category.description}</p>
+              </div>
+            ))
+          ) : (
+            <p>No categories found.</p>
+          )}
+        </div>
+
       </div>
 
     </div>

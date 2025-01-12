@@ -6,6 +6,7 @@
     "@react-three/drei": "^9.120.4",
     "@react-three/fiber": "^8.17.10",
     "@reduxjs/toolkit": "^2.5.0",
+    "axios": "^1.7.9",
     "concurrently": "^9.1.1",
     "cra-template": "1.2.0",
     "maath": "^0.10.8",

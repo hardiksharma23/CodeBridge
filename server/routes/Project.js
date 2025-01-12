@@ -18,7 +18,7 @@ const {
 const { auth, isHead, isContributer, isAdmin } = require("../middlewares/auth")
 
 
-router.post("/createProject", auth, isHead, createProject)
+router.post("/createProject", auth, isContributer, createProject)
 
 router.get("/showAllProjects", showAllProjects)
 
