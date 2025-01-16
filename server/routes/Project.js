@@ -15,10 +15,10 @@ const {
 } = require("../controllers/Tags")
 
 
-const { auth, isHead, isContributer, isAdmin } = require("../middlewares/auth")
+const { auth, isAdmin, isUser } = require("../middlewares/auth")
 
 
-router.post("/createProject", auth, isContributer, createProject)
+router.post("/createProject", auth, isUser, createProject)
 
 router.get("/showAllProjects", showAllProjects)
 

@@ -35,35 +35,36 @@ const Home = () => {
   return (
     <div className='pt-16'>
       {/* Hero section */}
-      <div className='flex flex-col mt-11 relative mx-auto items-center'>
+      <div className='flex flex-col mt-3 relative mx-auto items-center'>
 
-        <div className='flex absolute left-72 top-10 border-2 bg-white p-2 rounded-lg shadow-2xl shadow-slate-50'>
-          <img src={nextjs} alt="nextjs" width={50} />
-        </div>
+        <div className='flex items-center justify-center md:opacity-100 sm:opacity-0'>
+          <div className='flex absolute left-72 top-10 border-2 bg-white p-2 rounded-lg shadow-2xl shadow-slate-50'>
+            <img src={nextjs} alt="nextjs" width={50} />
+          </div>
 
-        <div className='flex absolute left-32 top-80 border-2 bg-white p-2 rounded-lg shadow-2xl shadow-slate-50'>
-          <img src={react} alt="nextjs" width={50} />
-        </div>
+          <div className='flex absolute left-32 top-80 border-2 bg-white p-2 rounded-lg shadow-2xl shadow-slate-50'>
+            <img src={react} alt="nextjs" width={50} />
+          </div>
 
-        <div className='flex absolute left-72 bottom-20 border-2 bg-white p-2 rounded-lg shadow-2xl shadow-slate-50'>
-          <img src={nodejs} alt="nextjs" width={50} />
-        </div>
+          <div className='flex absolute left-72 bottom-20 border-2 bg-white p-2 rounded-lg shadow-2xl shadow-slate-50'>
+            <img src={nodejs} alt="nextjs" width={50} />
+          </div>
 
-        <div className='flex absolute right-72 bottom-20 border-2 bg-white p-2 rounded-lg shadow-2xl shadow-slate-50'>
-          <img src={python} alt="nextjs" width={50} />
-        </div>
+          <div className='flex absolute right-72 bottom-20 border-2 bg-white p-2 rounded-lg shadow-2xl shadow-slate-50'>
+            <img src={python} alt="nextjs" width={50} />
+          </div>
 
-        <div className='flex absolute right-32 top-80 border-2 bg-white p-2 rounded-lg shadow-2xl shadow-slate-50'>
-          <img src={android} alt="nextjs" width={50} />
-        </div>
+          <div className='flex absolute right-32 top-80 border-2 bg-white p-2 rounded-lg shadow-2xl shadow-slate-50'>
+            <img src={android} alt="nextjs" width={50} />
+          </div>
 
-        <div className='flex absolute right-72 top-10 border-2 bg-white p-2 rounded-lg shadow-2xl shadow-slate-50'>
-          <img src={mongodb} alt="nextjs" width={50} />
+          <div className='flex absolute right-72 top-10 border-2 bg-white p-2 rounded-lg shadow-2xl shadow-slate-50'>
+            <img src={mongodb} alt="nextjs" width={50} />
+          </div>
         </div>
-        
 
         {/* tag line */}
-        <div className='font-serif text-4xl font-semibold leading-snug text-center pt-8'>
+        <div className='font-serif text-4xl font-semibold leading-snug text-center'>
           <p className='text-white'>Find projects </p>
           <p className='text-white'>that match your passion</p>
         </div>
@@ -81,13 +82,13 @@ const Home = () => {
         {/* button for project */}
         <div className='flex items-center text-2xl justify-between mb-12 gap-28 mx-auto text-white mt-44'>
           <Link to={"/projects"}>
-            <div className='font-serif border-2 border-gray-500 p-3 rounded-lg transition-all duration-200 hover:bg-gray-300 hover:text-black'>
+            <div className='bg-primary font-serif font-bold border-2 border-gray-500 text-gray-300 px-[12px] py-[8px] rounded-lg hover:bg-gradient-to-r hover:from-green-600 hover:to-emerald-700 hover:text-white transition-all duration-200'>
               <p className='ml-4 mr-4'>See All Projects</p>
             </div>
           </Link>
           
-          <Link to={"/signup"}>
-            <div className='font-serif border-2 border-gray-500 p-3 rounded-lg transition-all duration-200 hover:bg-gray-300 hover:text-black'>
+          <Link to={"/uploadProject"}>
+            <div className='bg-primary font-serif font-bold border-2 border-gray-500 text-gray-300 px-[12px] py-[8px] rounded-lg hover:bg-gradient-to-r hover:from-green-600 hover:to-emerald-700 hover:text-white transition-all duration-200'>
               <p className='ml-4 mr-4'>Upload Your Project</p>
             </div>
           </Link>

@@ -24,7 +24,7 @@ const Navbar = () => {
               {
                 token === null && (
                   <Link to='/login'>
-                    <button className='bg-primary font-serif font-bold border-2 border-gray-500 text-gray-300 px-[12px] py-[8px] rounded-lg transition-all duration-200 hover:bg-gray-300 hover:text-black'>
+                    <button className='bg-primary font-serif font-bold border-2 border-gray-500 text-gray-300 px-[12px] py-[8px] rounded-lg hover:bg-gradient-to-r hover:from-green-600 hover:to-emerald-700 hover:text-white transition-all duration-200'>
                       Log in
                     </button>
                   </Link>
@@ -35,7 +35,7 @@ const Navbar = () => {
               {
                 token === null && (
                   <Link to='/signup'>
-                    <button className='bg-primary font-serif font-bold border-2 border-gray-500 text-gray-300 px-[12px] py-[8px] rounded-lg transition-all duration-200 hover:bg-gray-300 hover:text-black'>
+                    <button className='bg-primary font-serif font-bold border-2 border-gray-500 text-gray-300 px-[12px] py-[8px] rounded-lg hover:bg-gradient-to-r hover:from-green-600 hover:to-emerald-700 hover:text-white transition-all duration-200'>
                       Sign Up
                     </button>
                   </Link>

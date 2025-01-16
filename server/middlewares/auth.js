@@ -39,7 +39,7 @@ exports.auth = (req, res, next) => {
 }
 
 //isContributers
-exports.isContributer = async (req, res, next) => {
+exports.isUser = async (req, res, next) => {
     try {
         if(req.user.accountType !== "Contributor") {
             return res.status(401).json({
@@ -58,23 +58,7 @@ exports.isContributer = async (req, res, next) => {
 }
 
 //isHead
-exports.isHead = async (req, res, next) => {
-    try {
-        if(req.user.accountType !== "Project-Head") {
-            return res.status(401).json({
-                success:false,
-                message: 'This is a protected route for Project-Head only',
-            });
-        }
-        next();
-    }
-    catch(error) {
-        return res.status(500).json({
-            success:false,
-            message:'User role cannot be verified, please try again',
-        });
-    }
-}
+
 
 //isAdmin
 exports.isAdmin = async (req, res, next) => {
