@@ -31,7 +31,21 @@ function App() {
             </OpenRoute>
           }/>
 
-        <Route path="/verify-email" element={<VerifyEmail/>}/>
+        <Route 
+          path="/verify-email" 
+          element={
+            <OpenRoute>
+              <VerifyEmail/>
+            </OpenRoute>
+          }
+        />
+
+        {/* <Route>
+          path="/Dashboard"
+        </Route> */}
+          
+
+
 
         <Route
           path='/uploadProject'

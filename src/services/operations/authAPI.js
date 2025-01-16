@@ -1,4 +1,4 @@
-import { setToken } from "../../slices/authSlice";
+import { setToken, setLoading } from "../../slices/authSlice";
 import { setUser } from "../../slices/profileSlice";
 import { apiConnector } from "../apiConnector";
 import { endpoints } from "../apis";
@@ -10,8 +10,8 @@ const {
 } = endpoints;
 
 export function sendOtp(email, navigate) {
-    return async () => {
-
+    return async (dispatch) => {
+      dispatch(setLoading(true))
       try {
         const response = await apiConnector("POST", SENDOTP_API, {
           email,
@@ -29,6 +29,8 @@ export function sendOtp(email, navigate) {
       } catch (error) {
         console.log("SENDOTP API ERROR............", error)
       }
+
+      dispatch(setLoading(false))
     }
   }
 
@@ -43,7 +45,8 @@ export function signup(
     otp,
     navigate
 ) {
-    return async () => {
+    return async (dispatch) => {
+        dispatch(setLoading(true))
         try{
             const response = await apiConnector("POST", SIGNUP_API, {
                 accountType,
@@ -66,12 +69,14 @@ export function signup(
             console.log("SIGNUP API ERROR............", error)
             navigate("/signup");
         }
+        dispatch(setLoading(false))
     }
 }
 
 
 export function login(email, password, navigate) {
     return async (dispatch) => {
+        dispatch(setLoading(true))
         try {
             const response = await apiConnector("POST", LOGIN_API, {
                 email,
@@ -99,6 +104,7 @@ export function login(email, password, navigate) {
             console.log("LOGIN API ERROR............", error);
             // navigate("/login");
         }
+        dispatch(setLoading(false))
     };
 }
 

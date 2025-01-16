@@ -6,6 +6,8 @@ import { login } from '../services/operations/authAPI'
 
 const Login = () => {
 
+    const[loading, setLoading] = useState(false);
+
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
@@ -25,7 +27,9 @@ const Login = () => {
 
     const handleOnSubmit = (e) => {
         e.preventDefault()
+        setLoading(true);
         dispatch(login(email, password, navigate))
+        setLoading(false)
     }
 
   return (
@@ -55,7 +59,7 @@ const Login = () => {
                     onChange={handleOnChange}
                 />
 
-                <button type='submit' className='mt-5 w-full py-3 px-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold rounded-lg shadow-lg hover:from-green-600 hover:to-emerald-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition duration-200'>
+                <button disabled={loading} type='submit' className='mt-5 w-full py-3 px-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold rounded-lg shadow-lg hover:from-green-600 hover:to-emerald-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition duration-200'>
                     Log In
                 </button>
             </form>
