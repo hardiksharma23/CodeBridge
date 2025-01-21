@@ -8,6 +8,9 @@ import VerifyEmail from "./pages/VerifyEmail";
 import OpenRoute from './components/auth/OpenRoute';
 import PrivateRoute from './components/auth/PrivateRoute';
 import UploadProject from './pages/UploadProject';
+import Dashboard from './pages/Dashboard';
+import MyProfile from './components/Dashboard/MyProfile';
+import MyProjects from './components/Dashboard/MyProjects';
 
 
 function App() {
@@ -40,9 +43,18 @@ function App() {
           }
         />
 
-        {/* <Route>
-          path="/Dashboard"
-        </Route> */}
+        <Route
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        >
+          <Route path="dashboard/my-profile" element={<MyProfile />} />
+
+          <Route path="dashboard/my-projects" element={<MyProjects />} />
+
+        </Route>
           
 
 
