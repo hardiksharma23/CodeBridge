@@ -11,6 +11,7 @@ import UploadProject from './pages/UploadProject';
 import Dashboard from './pages/Dashboard';
 import MyProfile from './components/Dashboard/MyProfile';
 import MyProjects from './components/Dashboard/MyProjects';
+import Settings from './components/Dashboard/Settings';
 
 
 function App() {
@@ -53,11 +54,9 @@ function App() {
           <Route path="dashboard/my-profile" element={<MyProfile />} />
 
           <Route path="dashboard/my-projects" element={<MyProjects />} />
+          <Route path="dashboard/settings" element={<Settings/>} />
 
         </Route>
-          
-
-
 
         <Route
           path='/uploadProject'

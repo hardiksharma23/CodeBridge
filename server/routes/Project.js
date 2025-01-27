@@ -15,14 +15,14 @@ const {
 } = require("../controllers/Tags")
 
 
-const { auth, isAdmin, isUser } = require("../middlewares/auth")
+const { auth, isUser } = require("../middlewares/auth")
 
 
 router.post("/createProject", auth, isUser, createProject)
 
 router.get("/showAllProjects", showAllProjects)
 
-router.post("/createTag", auth, isAdmin, createTag)
+router.post("/createTag", auth, isUser, createTag)
 router.get("/showAlltags", showAlltags)
 
 module.exports = router

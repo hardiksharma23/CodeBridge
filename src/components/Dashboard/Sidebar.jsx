@@ -18,9 +18,9 @@ const Sidebar = () => {
 
     if(authLoading || profileLoading) {
         return (
-          <div className='mt-20'>
-            Loading...
-          </div>
+            <div className="grid h-[calc(100vh-3.5rem)] min-w-[220px] items-center border-r-[1px] border-r-richblack-700 bg-richblack-800">
+                <div className="spinner"></div>
+            </div>
         )
     }
 
@@ -30,14 +30,14 @@ const Sidebar = () => {
 
   return (
     <div>
-        <div className='flex min-w-[222px] flex-col border-r-[1px] border-r-gray-400 h-[calc(100vh-3.5rem)] bg-gray-800 py-10'>
+        <div className='flex min-w-[222px] flex-col border-r-[1px] border-r-gray-400 h-[calc(100vh-3.5rem)] bg-gray-950 py-10'>
             <div className='flex flex-col'>
                 {/* My Profile */}
                 <NavLink
                     to="/dashboard/my-profile"
                     className={({ isActive }) =>
                         `relative px-8 py-2 text-sm font-medium ${
-                            isActive ? "bg-gradient-to-r from-green-500 to-emerald-600 text-white" : "bg-opacity-0 text-green-300"
+                            isActive ? "bg-gradient-to-r from-green-500 to-emerald-600 text-white" : "bg-opacity-0 text-gray-400"
                         } transition-all duration-200`
                     }
                 >
@@ -56,7 +56,7 @@ const Sidebar = () => {
                     to="/dashboard/my-projects"
                     className={({ isActive }) =>
                         `relative px-8 py-2 text-sm font-medium ${
-                            isActive ? "bg-gradient-to-r from-green-500 to-emerald-600 text-white" : "bg-opacity-0 text-green-300"
+                            isActive ? "bg-gradient-to-r from-green-500 to-emerald-600 text-white" : "bg-opacity-0 text-gray-400"
                         } transition-all duration-200`
                     }
                 >
@@ -75,7 +75,7 @@ const Sidebar = () => {
                     to="/"
                     className={({ isActive }) =>
                         `relative px-8 py-2 text-sm font-medium ${
-                            isActive ? "bg-gradient-to-r from-green-500 to-emerald-600 text-white" : "bg-opacity-0 text-green-300"
+                            isActive ? "bg-gradient-to-r from-green-500 to-emerald-600 text-white" : "bg-opacity-0 text-gray-400"
                         } transition-all duration-200`
                     }
                 >
@@ -95,6 +95,25 @@ const Sidebar = () => {
             <div className='mx-auto mt-6 mb-6 h-[1px] w-10/12 bg-gray-400'></div>
 
             <div className='flex flex-col'>
+
+                <NavLink
+                    to="/dashboard/settings"
+                    className={({ isActive }) =>
+                        `relative px-8 py-2 text-sm font-medium ${
+                            isActive ? "bg-gradient-to-r from-green-500 to-emerald-600 text-white" : "bg-opacity-0 text-gray-400"
+                        } transition-all duration-200`
+                    }
+                >
+                    <span
+                        className={`absolute left-0 top-0 h-full w-[0.15rem] bg-yellow-50 ${
+                            matchRoute('/dashboard/settings') ? "opacity-100" : "opacity-0"
+                        }`}
+                    ></span>
+                    <div className="flex items-center gap-x-2">
+                        <span>Settings</span>
+                    </div>
+                </NavLink>
+
                 <button
                     onClick={() =>
                     setConfirmationModal({

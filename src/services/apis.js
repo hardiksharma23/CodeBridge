@@ -9,3 +9,7 @@ export const endpoints = {
     SENDOTP_API: BASE_URL + "/auth/sendotp",
     LOGIN_API: BASE_URL + "/auth/login",
 }
+
+export const settingsEndpoints = {
+    UPDATE_PROFILE_API: BASE_URL + "/Profile/updateProfile",
+  }

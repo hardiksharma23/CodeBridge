@@ -78,11 +78,10 @@ exports.signUp = async (req,res) => {
             password,
             confirmPassword,
             accountType,
-            contactNumber,
             otp
         } = req.body;
 
-        if(!firstName || !lastName || !email || !password || !confirmPassword || !otp) {
+        if(!firstName || !lastName || !email || !accountType || !password || !confirmPassword || !otp) {
             return res.status(403).json({
                 success: false,
                 message: "all fields are required",
@@ -125,16 +124,15 @@ exports.signUp = async (req,res) => {
         //entry created in db
         const profileDetails = await Profile.create({
             gender:null,
-            dateOfBirth: null,
+            githubProfile:null,
             about: null,
-            contactNumber: null,
+            techStack: [],
         });
 
         const user = await User.create({
             firstName,
             lastName,
             email,
-            contactNumber,
             password: hashedPassword,
             accountType,
             additionaldetails: profileDetails._id,
