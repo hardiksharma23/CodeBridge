@@ -18,7 +18,7 @@ const Home = () => {
   const fetchcategories = async() => {
     try {
       const result = await apiConnector("GET", categories.CATEGORIES_API);
-      console.log("printing the sublinks result:", result);
+      // console.log("printing the sublinks result:", result);
       setSubLinks(result.data.allTags);
     }
     catch(error) {

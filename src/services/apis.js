@@ -4,6 +4,15 @@ export const categories = {
     CATEGORIES_API: BASE_URL + "/project/showAlltags",
 };
 
+export const projects = {
+    PROJECTS_API: BASE_URL + "/project/showAllProjects",
+}
+
+export const createProjectEndpoints = {
+    CREATE_PROJECT_API: BASE_URL + "/project/createProject",
+}
+
+
 export const endpoints = {
     SIGNUP_API: BASE_URL + "/auth/signup",
     SENDOTP_API: BASE_URL + "/auth/sendotp",
@@ -12,4 +21,4 @@ export const endpoints = {
 
 export const settingsEndpoints = {
     UPDATE_PROFILE_API: BASE_URL + "/Profile/updateProfile",
-  }
+}

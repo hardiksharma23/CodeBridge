@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import Navbar from './components/Navbar';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-import VerifyEmail from "./pages/VerifyEmail";
+import VerifyEmail from './pages/VerifyEmail';
 import OpenRoute from './components/auth/OpenRoute';
 import PrivateRoute from './components/auth/PrivateRoute';
 import UploadProject from './pages/UploadProject';
@@ -12,6 +12,7 @@ import Dashboard from './pages/Dashboard';
 import MyProfile from './components/Dashboard/MyProfile';
 import MyProjects from './components/Dashboard/MyProjects';
 import Settings from './components/Dashboard/Settings';
+import AllProjects from './pages/AllProjects';
 
 
 function App() {
@@ -67,6 +68,8 @@ function App() {
           }
         
         />
+
+        <Route path='/projects' element={<AllProjects/>} />
         
       </Routes>
     </div>
