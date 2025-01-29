@@ -9,7 +9,7 @@ const AllProjects = () => {
     const fetchprojects = async() => {
         try {
           const result = await apiConnector("GET", projects.PROJECTS_API);
-        //   console.log("printing the projects:", result);
+          console.log("printing the projects:", result);
           setProjects(result.data.data);
         }
         catch(error) {

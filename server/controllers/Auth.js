@@ -168,7 +168,8 @@ exports.login = async (req,res) => {
             });
         }
 
-        const user = await User.findOne({email}).populate("additionaldetails");
+        const user = await User.findOne({ email }).populate("additionaldetails").populate("projects");
+
         if(!user) {
             return res.status(401).json({
                 success:false,

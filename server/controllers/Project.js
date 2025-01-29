@@ -63,6 +63,8 @@ exports.createProject = async (req, res) => {
             { new: true }
         );
 
+        await User.findById(userId).populate("projects");
+
         return res.status(200).json({
             success: true,
             message: "Project created successfully",

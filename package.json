@@ -19,6 +19,7 @@
     "react-router-dom": "^7.1.1",
     "react-scripts": "5.0.1",
     "react-tilt": "^1.0.2",
+    "react-type-animation": "^3.2.0",
     "react-vertical-timeline-component": "^3.5.3",
     "redux-persist": "^6.0.0",
     "redux-toolkit": "^1.1.2",

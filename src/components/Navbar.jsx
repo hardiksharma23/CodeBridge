@@ -3,6 +3,7 @@ import logo from '../assets/logo.png';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileDropDown from './ProfileDropDown';
+import GetStarted from './GetStarted';
 
 const Navbar = () => {
 
@@ -19,6 +20,8 @@ const Navbar = () => {
           </Link>
 
             <div className='flex items-center gap-x-7 pt-2'>
+
+              <GetStarted/>
 
               {/* log in */}
               {

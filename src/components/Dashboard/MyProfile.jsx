@@ -105,6 +105,7 @@ const MyProfile = () => {
                 {user?.additionaldetails?.githubProfile ?? "Add GitHub Profile"}
               </p>
             </div>
+            
             <div>
               <p className="mb-2 text-sm text-gray-400">Tech Stack</p>
               <p className="text-sm font-medium text-white">
