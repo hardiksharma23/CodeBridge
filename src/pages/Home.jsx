@@ -11,6 +11,7 @@ import { apiConnector } from '../services/apiConnector'
 import { categories } from '../services/apis'
 import CodeBlocks from '../components/CodeBlocks'
 import CodeBlocks_2 from '../components/CodeBlocks_2'
+import TechSlider from '../components/TechSlider'
 
 
 const Home = () => {
@@ -116,22 +117,34 @@ const Home = () => {
               Showcase your expertise, contribute to meaningful innovations, and be part of a thriving developer community where ideas transform into reality. Learn, collaborate, and grow as you build solutions together.
             </p>
           </div>
-        </div>
-
-        <div className='flex w-11/12 max-w-[1260px] justify-between gap-x-10'>
-          {/* highlighted heading */}
-          <div className='flex flex-col justify-center text-white font-serif p-5 gap-y-6 ml-10'>
-            <p className='text-4xl font-bold'>Find <span className='bg-gradient-to-b from-[#1FA2FF] via-[#12D8FA] to-[#A6FFCB] text-transparent bg-clip-text font-bold'>Projects,</span></p>
-            <p className='text-4xl font-bold'>Share <span className='bg-gradient-to-r from-green-600 via-[#6ec888] to-emerald-600 text-transparent bg-clip-text font-bold'>Knowledge,</span></p>
-            <p className='text-4xl font-bold'>Build <span className='bg-gradient-to-b from-[#1FA2FF] via-[#12D8FA] to-[#A6FFCB] text-transparent bg-clip-text font-bold'>Connections.</span></p>
-          </div>
-
-          <div>
-            <CodeBlocks_2/>
-          </div>
         </div> 
-        
       </div>
+
+      {/* slider */}
+      <div className='mt-40 mb-40'>
+        <TechSlider/>
+      </div>
+
+      <div className='flex flex-col gap-y-36 items-center justify-center mt-24 mb-24'>
+        <div className='flex w-11/12 max-w-[1260px] justify-between gap-x-10'>
+            {/* highlighted heading */}
+            <div className='flex flex-col justify-center text-white font-serif p-5 gap-y-6 ml-10'>
+              <p className='text-4xl font-bold'>Find <span className='bg-gradient-to-b from-[#1FA2FF] via-[#12D8FA] to-[#A6FFCB] text-transparent bg-clip-text font-bold'>Projects,</span></p>
+              <p className='text-4xl font-bold'>Share <span className='bg-gradient-to-r from-green-600 via-[#6ec888] to-emerald-600 text-transparent bg-clip-text font-bold'>Knowledge,</span></p>
+              <p className='text-4xl font-bold'>Build <span className='bg-gradient-to-b from-[#1FA2FF] via-[#12D8FA] to-[#A6FFCB] text-transparent bg-clip-text font-bold'>Connections.</span></p>
+            </div>
+
+            <div>
+              <CodeBlocks_2/>
+            </div>
+        </div>
+      </div>
+
+      
+      {/* section - 3 */}
+
+      
+
 
       {/* section 3 */}
       {/* <div className='flex flex-col items-center justify-center mt-12 mb-12'>
@@ -154,6 +167,8 @@ const Home = () => {
           </div>
 
       </div> */}
+
+      
 
     </div>
   )

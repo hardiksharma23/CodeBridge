@@ -30,7 +30,7 @@ const Sidebar = () => {
 
   return (
     <div>
-        <div className='flex min-w-[222px] flex-col border-r-[1px] border-r-gray-400 h-[calc(100vh-3.5rem)] bg-gray-950 py-10'>
+        <div className='flex min-w-[222px] flex-col border-r-[1px] border-t-[1px] border-r-gray-400 border-t-gray-400 h-[calc(100vh-3.5rem)] bg-gray-950 py-10'>
             <div className='flex flex-col'>
                 {/* My Profile */}
                 <NavLink

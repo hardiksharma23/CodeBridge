@@ -13,6 +13,7 @@ import MyProfile from './components/Dashboard/MyProfile';
 import MyProjects from './components/Dashboard/MyProjects';
 import Settings from './components/Dashboard/Settings';
 import AllProjects from './pages/AllProjects';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -72,6 +73,8 @@ function App() {
         <Route path='/projects' element={<AllProjects/>} />
         
       </Routes>
+
+      <Footer/>
     </div>
   );
 }

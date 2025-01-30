@@ -36,7 +36,7 @@ const CreateProject = () => {
   };
 
   return (
-    <div className="min-h-screen text-white">
+    <div className="min-h-screen text-white mb-20">
       <div className="w-11/12 max-w-[1260px] mx-auto rounded-xl shadow-lg">
         <h1 className="text-gray-300 font-serif text-3xl font-bold mb-12 mt-6">Upload Your Project</h1>
         <form onSubmit={handleSubmit(submitProjectForm)} className="space-y-8 border-2 border-gray-500 p-6 rounded-2xl bg-gray-950 mb-6">
