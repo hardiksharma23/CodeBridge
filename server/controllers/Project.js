@@ -109,3 +109,34 @@ exports.showAllProjects = async (req,res) => {
     }
 }
 
+exports.getProjectDetails = async (req, res) => {
+    try {
+        const { projectId } = req.params;
+        const project = await Project.findById(projectId)
+            .populate("projectHead", "firstName lastName")
+            .populate("contributors", "firstName lastName")
+            .populate("tag", "name")
+            .exec();
+
+        if (!project) {
+            return res.status(404).json({
+                success: false,
+                message: "Project not found",
+            });
+        }
+
+        return res.status(200).json({
+            success: true,
+            data: project,
+        });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({
+            success: false,
+            message: "Failed to fetch project details",
+        });
+    }
+};
+
+
+

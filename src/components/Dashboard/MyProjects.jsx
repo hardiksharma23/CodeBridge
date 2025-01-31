@@ -1,8 +1,14 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const MyProjects = () => {
   const { user } = useSelector((state) => state.profile);
+  const navigate = useNavigate();
+
+  const handleCardClick = (projectId) => {
+    navigate(`/project/${projectId}`);
+  };
 
   console.log('User Projects:', user?.projects); // Debugging line
 
@@ -19,7 +25,8 @@ const MyProjects = () => {
             return (
               <div
                 key={myProject._id}
-                className="flex flex-col sm:flex-row items-start sm:items-center gap-5 border border-gray-700 rounded-lg p-6 bg-gray-950 hover:shadow-lg transition-shadow"
+                className="flex flex-col sm:flex-row items-start sm:items-center gap-5 border border-gray-700 rounded-lg p-6 bg-gray-950 hover:shadow-lg transition-shadow cursor-pointer"
+                onClick={() => handleCardClick(myProject._id)}
               >
                 <div className="flex-shrink-0">
                   <img

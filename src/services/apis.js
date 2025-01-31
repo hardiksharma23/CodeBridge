@@ -8,6 +8,8 @@ export const projects = {
     PROJECTS_API: BASE_URL + "/project/showAllProjects",
 }
 
+
+
 export const createProjectEndpoints = {
     CREATE_PROJECT_API: BASE_URL + "/project/createProject",
 }

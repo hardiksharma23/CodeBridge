@@ -30,19 +30,21 @@ exports.createTag = async (req,res) => {
     }
 }
 
-exports.showAlltags = async (req,res) => {
+exports.showAlltags = async (req, res) => {
     try {
-        const allTags = await Tag.find({}, {name:true, description:true});
+        // console.log("Fetching all tags...");
+        const allTags = await Tag.find({}, { name: true, description: true });
+        // console.log("Tags fetched:", allTags);
         return res.status(200).json({
-            success:true,
-            message:'All tags are returned',
+            success: true,
+            message: 'All tags are returned',
             allTags,
-        })
-    }
-    catch(error) {
+        });
+    } catch (error) {
+        console.error("Error fetching tags:", error);
         return res.status(500).json({
-            success:false,
-            message:error.message,
+            success: false,
+            message: error.message,
         });
     }
-}
+};

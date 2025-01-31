@@ -101,9 +101,10 @@ const MyProfile = () => {
             </div>
             <div>
               <p className="mb-2 text-sm text-gray-400">GitHub Profile</p>
-              <p className="text-sm font-medium text-white">
+              <a href={user?.additionaldetails?.githubProfile} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline ml-1">
                 {user?.additionaldetails?.githubProfile ?? "Add GitHub Profile"}
-              </p>
+              </a>
+              
             </div>
             
             <div>

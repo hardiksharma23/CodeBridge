@@ -14,6 +14,7 @@ import MyProjects from './components/Dashboard/MyProjects';
 import Settings from './components/Dashboard/Settings';
 import AllProjects from './pages/AllProjects';
 import Footer from './components/Footer';
+import ProjectDetails from './components/ProjectDetails';
 
 
 function App() {
@@ -71,6 +72,7 @@ function App() {
         />
 
         <Route path='/projects' element={<AllProjects/>} />
+        <Route path="/project/:projectId" element={<ProjectDetails />} />
         
       </Routes>
 
