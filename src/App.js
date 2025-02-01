@@ -16,6 +16,7 @@ import AllProjects from './pages/AllProjects';
 import Footer from './components/Footer';
 import ProjectDetails from './components/ProjectDetails';
 import UserDetails from './components/UserDetails';
+import SearchProjects from './components/SearchProjects';
 
 
 function App() {
@@ -76,6 +77,8 @@ function App() {
         <Route path="/project/:projectId" element={<ProjectDetails />} />
 
         <Route path="/auth/:userId" element={<UserDetails />} />
+
+        <Route path="/project/search" element={<SearchProjects />} />
         
       </Routes>
 

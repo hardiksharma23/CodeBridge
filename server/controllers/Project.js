@@ -139,4 +139,36 @@ exports.getProjectDetails = async (req, res) => {
 };
 
 
+exports.searchProjectsByTagName = async (req, res) => {
+    try {
+      const { tagName } = req.query;
+      const tag = await Tag.findOne({ name: tagName });
+  
+      if (!tag) {
+        return res.status(404).json({
+          success: false,
+          message: "Tag not found",
+        });
+      }
+  
+      const projects = await Project.find({ tag: tag._id })
+        .populate("projectHead", "firstName lastName")
+        .populate("contributors", "firstName lastName")
+        .populate("tag", "name")
+        .exec();
+  
+      return res.status(200).json({
+        success: true,
+        data: projects,
+      });
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({
+        success: false,
+        message: "Failed to search projects by tag name",
+      });
+    }
+};
+
+
 

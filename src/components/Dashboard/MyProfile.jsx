@@ -110,7 +110,7 @@ const MyProfile = () => {
             <div>
               <p className="mb-2 text-sm text-gray-400">Tech Stack</p>
               <p className="text-sm font-medium text-white">
-                {user?.additionaldetails?.techStack ?? "Add Tech Stack"}
+                {user?.additionaldetails?.techStack?.join(", ") ?? "Add Tech Stack"}
               </p>
             </div>
           </div>
