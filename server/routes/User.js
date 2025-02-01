@@ -5,6 +5,7 @@ const {
   login,
   signUp,
   sendOTP,
+  getUserDetails
 } = require("../controllers/Auth")
 
 
@@ -19,6 +20,8 @@ router.post("/signup", signUp)
 
 // Route for sending OTP to the user's email
 router.post("/sendotp", sendOTP)
+
+router.get("/:userId", getUserDetails);
 
 
 // Export the router for use in the main application

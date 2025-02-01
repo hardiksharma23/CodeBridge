@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { apiConnector } from '../services/apiConnector';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const ProjectDetails = () => {
   const { projectId } = useParams();
+  const navigate = useNavigate();
   const [project, setProject] = useState(null);
 
   useEffect(() => {
@@ -26,6 +27,10 @@ const ProjectDetails = () => {
     return <div className="text-center text-white">Loading...</div>;
   }
 
+  const handleHeadClick = () => {
+    navigate(`/auth/${project.projectHead._id}`);
+  };
+
   return (
     <div className="flex flex-col w-11/12 max-w-[1260px] mx-auto p-8 bg-gray-900 rounded-lg shadow-lg text-white mt-10 mb-10">
       <h1 className="flex justify-center font-serif text-4xl font-bold mb-6 items-center">{project.projectName}</h1>
@@ -41,7 +46,10 @@ const ProjectDetails = () => {
             <span className="font-semibold text-gray-400">Tech Stack : </span> {project.techStack}
           </div>
           <div className="mb-7">
-            <span className="font-semibold text-gray-400">Project Head : </span> {project.projectHead.firstName} {project.projectHead.lastName}
+            <span className="font-semibold text-gray-400">Project Head : </span> 
+            <span className="text-blue-400 hover:underline cursor-pointer" onClick={handleHeadClick}>
+              {project.projectHead.firstName} {project.projectHead.lastName}
+            </span>
           </div>
           <div className="mb-4">
             <span className="font-semibold text-gray-400">GitHub URL : </span> 

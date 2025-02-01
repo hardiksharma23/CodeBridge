@@ -15,6 +15,7 @@ import Settings from './components/Dashboard/Settings';
 import AllProjects from './pages/AllProjects';
 import Footer from './components/Footer';
 import ProjectDetails from './components/ProjectDetails';
+import UserDetails from './components/UserDetails';
 
 
 function App() {
@@ -73,6 +74,8 @@ function App() {
 
         <Route path='/projects' element={<AllProjects/>} />
         <Route path="/project/:projectId" element={<ProjectDetails />} />
+
+        <Route path="/auth/:userId" element={<UserDetails />} />
         
       </Routes>
 
