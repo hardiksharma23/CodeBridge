@@ -2,11 +2,15 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { createProject } from "../services/operations/CreateProjectAPI";
+import { useState } from "react";
 
 const CreateProject = () => {
   const { token } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const [loading, setLoading] = useState(false);
+  const [thumbnailPreview, setThumbnailPreview] = useState(null);
 
   const {
     register,
@@ -26,25 +30,35 @@ const CreateProject = () => {
 
     console.log("Payload being sent to the backend:", formData);
 
+    setLoading(true);  // Set loading state
+
     try {
-      dispatch(createProject(token, formData));
+      await dispatch(createProject(token, formData));
       console.log("Project created successfully");
       navigate("/projects");
     } catch (error) {
       console.error("Error during project creation:", error.response?.data || error.message);
+    } finally {
+      setLoading(false);  // Reset loading state after request
+    }
+  };
+
+  const handleThumbnailChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setThumbnailPreview(URL.createObjectURL(file));
     }
   };
 
   return (
-    <div className="min-h-screen text-white mb-20">
+    <div className="min-h-screen text-white mb-20 mt-24">
       <div className="w-11/12 max-w-[1260px] mx-auto rounded-xl shadow-lg">
         <h1 className="text-gray-300 font-serif text-3xl font-bold mb-12 mt-6">Upload Your Project</h1>
         <form onSubmit={handleSubmit(submitProjectForm)} className="space-y-8 border-2 border-gray-500 p-6 rounded-2xl bg-gray-950 mb-6">
           <div className="space-y-6">
+            {/* Project Name */}
             <div>
-              <label htmlFor="projectName" className="block text-lg font-medium">
-                Project Name
-              </label>
+              <label htmlFor="projectName" className="block text-lg font-medium">Project Name</label>
               <input
                 type="text"
                 name="projectName"
@@ -58,10 +72,9 @@ const CreateProject = () => {
               )}
             </div>
 
+            {/* Project Description */}
             <div>
-              <label htmlFor="projectDescription" className="block text-lg font-medium">
-                Project Description
-              </label>
+              <label htmlFor="projectDescription" className="block text-lg font-medium">Project Description</label>
               <textarea
                 name="projectDescription"
                 id="projectDescription"
@@ -74,10 +87,9 @@ const CreateProject = () => {
               )}
             </div>
 
+            {/* Tech Stack */}
             <div>
-              <label htmlFor="techStack" className="block text-lg font-medium">
-                Tech Stack (comma-separated)
-              </label>
+              <label htmlFor="techStack" className="block text-lg font-medium">Tech Stack (comma-separated)</label>
               <input
                 type="text"
                 name="techStack"
@@ -91,10 +103,9 @@ const CreateProject = () => {
               )}
             </div>
 
+            {/* GitHub URL */}
             <div>
-              <label htmlFor="githubUrl" className="block text-lg font-medium">
-                GitHub URL
-              </label>
+              <label htmlFor="githubUrl" className="block text-lg font-medium">GitHub URL</label>
               <input
                 type="text"
                 name="githubUrl"
@@ -108,10 +119,9 @@ const CreateProject = () => {
               )}
             </div>
 
+            {/* Tag */}
             <div>
-              <label htmlFor="tag" className="block text-lg font-medium">
-                Tag
-              </label>
+              <label htmlFor="tag" className="block text-lg font-medium">Tag</label>
               <input
                 type="text"
                 name="tag"
@@ -125,23 +135,29 @@ const CreateProject = () => {
               )}
             </div>
 
+            {/* Thumbnail Image */}
             <div>
-              <label htmlFor="thumbnail" className="block text-lg font-medium">
-                Thumbnail Image
-              </label>
+              <label htmlFor="thumbnail" className="block text-lg font-medium">Thumbnail Image</label>
               <input
                 type="file"
                 name="thumbnail"
                 id="thumbnail"
                 className="w-full mt-2 p-3 rounded-md bg-gray-700 text-white focus:outline-none"
                 {...register("thumbnail", { required: true })}
+                onChange={handleThumbnailChange}
               />
               {errors.thumbnail && (
                 <p className="text-red-500 text-sm mt-1">Please upload a thumbnail image.</p>
               )}
+              {thumbnailPreview && (
+                <div className="mt-4">
+                  <img src={thumbnailPreview} alt="Thumbnail Preview" className="w-32 h-32 object-cover rounded-md" />
+                </div>
+              )}
             </div>
           </div>
 
+          {/* Submit Buttons */}
           <div className="flex justify-end gap-4">
             <button
               onClick={() => navigate("/")}
@@ -153,8 +169,9 @@ const CreateProject = () => {
             <button
               type="submit"
               className="py-3 px-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold rounded-lg shadow-lg hover:from-green-600 hover:to-emerald-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition duration-200"
+              disabled={loading}
             >
-              Upload
+              {loading ? "Uploading..." : "Upload"}
             </button>
           </div>
         </form>

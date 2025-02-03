@@ -35,13 +35,13 @@ const Settings = () => {
   };
 
   return (
-    <div className="container mx-auto p-8 bg-gray-950 text-white rounded-xl shadow-md">
-      <h1 className="font-serif text-4xl font-bold mb-8">Edit Profile</h1>
+    <div className="container mx-auto p-6 sm:p-8 bg-gray-950 text-white rounded-xl shadow-md">
+      <h1 className="font-serif text-2xl md:text-4xl font-bold mb-8 text-center md:text-left">Edit Profile</h1>
       <form onSubmit={handleSubmit(submitProfileForm)} className="space-y-6">
         {/* Profile Information */}
-        <div className="p-6 rounded-lg shadow-md">
-          <h2 className="text-2xl font-semibold mb-4">Profile Information</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="p-6 rounded-lg shadow-md bg-gray-800">
+          <h2 className="text-xl md:text-2xl font-semibold mb-4">Profile Information</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* First Name */}
             <div>
               <label htmlFor="firstName" className="block text-sm font-medium mb-1">
@@ -74,7 +74,7 @@ const Settings = () => {
           </div>
 
           {/* Github and Gender */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
             <div>
               <label htmlFor="githubProfile" className="block text-sm font-medium mb-1">
                 GitHub Profile
@@ -82,7 +82,7 @@ const Settings = () => {
               <input
                 type="text"
                 id="githubProfile"
-                className="w-full p-2 border border-gray-600 bg-gray-900 rounded-md text-gray-300"
+                className="w-full p-2 border border-gray-600 bg-gray-900 rounded-md text-gray-300 break-words break-all"
                 {...register("githubProfile", { required: true })}
                 defaultValue={user?.additionaldetails?.githubProfile}
               />
@@ -110,7 +110,7 @@ const Settings = () => {
           </div>
 
           {/* TechStack and About */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
             <div>
               <label htmlFor="techStack" className="block text-sm font-medium mb-1">
                 Tech Stack (Comma-separated)
@@ -146,7 +146,7 @@ const Settings = () => {
           <button
             type="button"
             onClick={() => navigate("/dashboard/my-profile")}
-            className="font-serif py-3 px-4 bg-gray-700 text-white font-bold rounded-lg shadow-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition duration-200"
+            className="py-3 px-4 bg-gray-700 text-white font-bold rounded-lg shadow-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition duration-200"
           >
             Cancel
           </button>

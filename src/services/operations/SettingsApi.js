@@ -1,3 +1,4 @@
+import { toast } from "react-hot-toast"
 import { setUser } from "../../slices/profileSlice"
 import { apiConnector } from "../apiConnector"
 import { settingsEndpoints } from "../apis"
@@ -9,6 +10,7 @@ const {
 
 export function updateProfile(token, formData) {
   return async (dispatch) => {
+    const toastId = toast.loading("Loading...")
       try {
           const response = await apiConnector("PUT", UPDATE_PROFILE_API, formData, {
               Authorization: `Bearer ${token}`,
@@ -32,10 +34,14 @@ export function updateProfile(token, formData) {
           // Dispatch to Redux
           dispatch(setUser(normalizedProfile));
 
+          toast.success("Profile Updated Successfully")
+
           console.log("User profile updated in Redux:", normalizedProfile);
       } catch (error) {
           console.error("Error updating profile:", error.response?.data || error.message);
+          toast.error("Could Not Update Profile")
       }
+      toast.dismiss(toastId)
   };
 }
 

@@ -1,3 +1,5 @@
+import { toast } from "react-hot-toast"
+
 import { setToken, setLoading } from "../../slices/authSlice";
 import { setUser } from "../../slices/profileSlice";
 import { apiConnector } from "../apiConnector";
@@ -11,6 +13,7 @@ const {
 
 export function sendOtp(email, navigate) {
     return async (dispatch) => {
+      const toastId = toast.loading("Loading...")
       dispatch(setLoading(true))
       try {
         const response = await apiConnector("POST", SENDOTP_API, {
@@ -24,13 +27,17 @@ export function sendOtp(email, navigate) {
         if (!response.data.success) {
           throw new Error(response.data.message)
         }
+
+        toast.success("OTP Sent Successfully")
   
         navigate("/verify-email")
       } catch (error) {
         console.log("SENDOTP API ERROR............", error)
+        toast.error(error.response.data.message)
       }
 
       dispatch(setLoading(false))
+      toast.dismiss(toastId)
     }
   }
 
@@ -46,6 +53,7 @@ export function signup(
     navigate
 ) {
     return async (dispatch) => {
+        const toastId = toast.loading("Loading...")
         dispatch(setLoading(true))
         try{
             const response = await apiConnector("POST", SIGNUP_API, {
@@ -63,19 +71,23 @@ export function signup(
             if(!response.data.success) {
                 throw new Error(response.data.message);
             }
+            toast.success("Signup Successful")
             navigate("/login");
         }
         catch(error) {
             console.log("SIGNUP API ERROR............", error)
+            toast.error(error.response.data.message)
             navigate("/signup");
         }
         dispatch(setLoading(false))
+        toast.dismiss(toastId)
     }
 }
 
 
 export function login(email, password, navigate) {
     return async (dispatch) => {
+      const toastId = toast.loading("Loading...")
         dispatch(setLoading(true))
         try {
             const response = await apiConnector("POST", LOGIN_API, {
@@ -88,6 +100,7 @@ export function login(email, password, navigate) {
             if(!response.data.success) {
                 throw new Error(response.data.message);
             }
+            toast.success("Login Successful")
 
             dispatch(setToken(response.data.token));
 
@@ -102,9 +115,11 @@ export function login(email, password, navigate) {
 
         } catch (error) {
             console.log("LOGIN API ERROR............", error);
+            toast.error(error.response.data.message)
             // navigate("/login");
         }
         dispatch(setLoading(false))
+        toast.dismiss(toastId)
     };
 }
 
@@ -114,6 +129,7 @@ export function logout(navigate) {
       dispatch(setUser(null))
       localStorage.removeItem("token")
       localStorage.removeItem("user")
+      toast.success("Logged Out")
       navigate("/")
     }
   }

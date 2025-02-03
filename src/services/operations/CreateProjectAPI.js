@@ -1,3 +1,4 @@
+import { toast } from "react-hot-toast"
 import { apiConnector } from "../apiConnector";
 import { createProjectEndpoints } from "../apis"
 import { setLoading } from "../../slices/authSlice";
@@ -6,11 +7,9 @@ const { CREATE_PROJECT_API } = createProjectEndpoints;
 
 export function createProject(token, formData) {
   return async (dispatch) => {
+    const toastId = toast.loading("Loading...");
+    dispatch(setLoading(true));
     try {
-      // Set loading to true
-      dispatch(setLoading(true));
-
-      // API call to create a project
       const response = await apiConnector("POST", CREATE_PROJECT_API, formData, {
         Authorization: `Bearer ${token}`,
       });
@@ -21,21 +20,18 @@ export function createProject(token, formData) {
         throw new Error(response.data.message || "Failed to create project");
       }
 
+      toast.success("Project Uploaded Successfully");
       const newProject = response.data.data;
-
       console.log("Project created successfully:", newProject);
 
-      // Stop loading
-      dispatch(setLoading(false));
-
-      return newProject; // Return created project for further use
+      return newProject; 
     } catch (error) {
       console.error("Error creating project:", error.response?.data || error.message);
-
-      // Stop loading in case of error
+      toast.error(error.message);
+      throw error; 
+    } finally {
       dispatch(setLoading(false));
-
-      throw error; // Rethrow the error for handling at the component level
+      toast.dismiss(toastId);
     }
   };
 }

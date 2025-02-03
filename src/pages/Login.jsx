@@ -3,6 +3,8 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { login } from '../services/operations/authAPI'
+import { MdOutlineMail } from "react-icons/md";
+import { RiLockPasswordFill } from "react-icons/ri";
 
 const Login = () => {
     const [loading, setLoading] = useState(false);
@@ -30,11 +32,11 @@ const Login = () => {
     }
 
     return (
-        <div className='flex items-center justify-center min-h-screen '>
+        <div className='flex items-center justify-center min-h-screen px-4 sm:px-8 mt-14'>
             <div className='relative flex flex-col w-full max-w-md p-8 space-y-8 rounded-3xl backdrop-blur-xl bg-gray-800/70 border border-gray-700 shadow-2xl shadow-emerald-900/30'>
                 {/* Header Section */}
                 <div className='space-y-4 text-center'>
-                    <h1 className='text-4xl font-bold tracking-tight bg-gradient-to-r from-emerald-400 to-green-300 bg-clip-text text-transparent'>
+                    <h1 className='text-3xl sm:text-4xl font-bold tracking-tight bg-gradient-to-r from-emerald-400 to-green-300 bg-clip-text text-transparent'>
                         Welcome Back
                     </h1>
                     <p className='text-gray-400'>Please sign in to continue</p>
@@ -52,11 +54,12 @@ const Login = () => {
                                 value={email}
                                 onChange={handleOnChange}
                             />
-                            <svg xmlns="http://www.w3.org/2000/svg" className="absolute w-5 h-5 top-4 left-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                            </svg>
+                            <div  className="absolute w-5 h-5 top-4 left-4 text-gray-500">
+                                <MdOutlineMail />
+                            </div>
                         </div>
 
+                        
                         <div className='relative'>
                             <input
                                 className='w-full px-4 py-3 pl-12 text-gray-200 placeholder-gray-500 transition-all duration-200 border rounded-2xl bg-gray-900/40 border-gray-600 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/30 focus:bg-gray-900/70 hover:border-gray-500'
@@ -66,9 +69,9 @@ const Login = () => {
                                 value={password}
                                 onChange={handleOnChange}
                             />
-                            <svg xmlns="http://www.w3.org/2000/svg" className="absolute w-5 h-5 top-4 left-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                            </svg>
+                            <div  className="absolute w-5 h-5 top-4 left-4 text-gray-500">
+                                <RiLockPasswordFill />
+                            </div>
                         </div>
                     </div>
 
