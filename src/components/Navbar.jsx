@@ -34,7 +34,7 @@ const Navbar = () => {
 
   useEffect(() => {
     setFilteredTags(tags.filter((tag) => tag.name.toLowerCase().includes(searchTerm.toLowerCase())));
-  }, [searchTerm, tags]);
+  }, [searchTerm]);
 
   const handleSearch = (tagName) => {
     if (tagName.trim()) {
