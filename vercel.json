@@ -1,7 +1,5 @@
 {
     "version": 2,
-    "buildCommand": "npm run build",
-    "outputDirectory": "build",
     "builds": [
       {
         "src": "server/index.js",
@@ -11,8 +9,7 @@
         "src": "package.json",
         "use": "@vercel/static-build",
         "config": {
-          "distDir": "build",
-          "buildCommand": "npm run build"
+          "distDir": "build"
         }
       }
     ],
@@ -25,9 +22,5 @@
         "src": "/(.*)",
         "dest": "/$1"
       }
-    ],
-    "env": {
-      "MONGODB_URL": "@mongodb_url",
-      "NODE_ENV": "production"
-    }
+    ]
   }
