@@ -29,7 +29,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "GENERATE_SOURCEMAP=false react-scripts build",
+    "build": "cross-env GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "server": "cd server && npm run dev",
@@ -54,6 +54,7 @@
     ]
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "tailwindcss": "^3.4.17"
   }
 }

@@ -26,10 +26,13 @@ database.connect();
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-	origin: "http://localhost:3000",
+	origin: process.env.NODE_ENV === 'production' 
+	  ? ['https://code-bridge-git-main-hardik-sharmas-projects-03c0716d.vercel.app', 
+		 'https://code-bridge-mg1img3sa-hardik-sharmas-projects-03c0716d.vercel.app']
+	  : "http://localhost:3000",
 	credentials: true,
 	allowedHeaders: ["Content-Type", "Authorization"],
- }));
+  }));
 
 app.use(
 	fileUpload({
