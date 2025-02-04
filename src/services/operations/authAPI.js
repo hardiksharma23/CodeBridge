@@ -20,9 +20,9 @@ export function sendOtp(email, navigate) {
           email,
           checkUserPresent: true,
         })
-        console.log("SENDOTP API RESPONSE............", response)
+        // console.log("SENDOTP API RESPONSE............", response)
   
-        console.log(response.data.success)
+        // console.log(response.data.success)
   
         if (!response.data.success) {
           throw new Error(response.data.message)
@@ -66,7 +66,7 @@ export function signup(
                 otp,
             })
 
-            console.log("Signup response", response);
+            // console.log("Signup response", response);
 
             if(!response.data.success) {
                 throw new Error(response.data.message);
@@ -95,7 +95,7 @@ export function login(email, password, navigate) {
                 password,
             }) 
 
-            console.log("Login response .....", response);
+            // console.log("Login response .....", response);
 
             if(!response.data.success) {
                 throw new Error(response.data.message);

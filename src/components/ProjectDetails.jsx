@@ -13,7 +13,7 @@ const ProjectDetails = () => {
     const fetchProjectDetails = async () => {
       try {
         const response = await apiConnector("GET", BASE_URL + `/project/${projectId}`);
-        console.log("Project Details Response:", response);
+        // console.log("Project Details Response:", response);
         setProject(response.data.data);
       } catch (error) {
         console.error("Failed to fetch project details", error);

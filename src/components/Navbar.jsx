@@ -9,7 +9,6 @@ import useOnClickOutside from "../hook/useOnclickOutside";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai"; 
 import { IoIosSearch } from "react-icons/io";
 
-
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const Navbar = () => {
@@ -35,14 +34,14 @@ const Navbar = () => {
 
   useEffect(() => {
     setFilteredTags(tags.filter((tag) => tag.name.toLowerCase().includes(searchTerm.toLowerCase())));
-  }, [searchTerm,]);
+  }, [searchTerm, tags]);
 
   const handleSearch = (tagName) => {
     if (tagName.trim()) {
       setSearchTerm(tagName);
       navigate(`/project/search?tagName=${tagName}`);
       setFilteredTags([]);
-      setIsOpen(false);  // Close menu after search
+      setIsOpen(false);
     }
   };
 
@@ -51,18 +50,14 @@ const Navbar = () => {
   return (
     <div className="bg-bg2 mb-11 text-white fixed w-full top-0 z-50 shadow-md">
       <div className="flex w-11/12 max-w-[1260px] items-center justify-between mx-auto py-4">
-        
-        {/* Logo */}
         <Link to="/" onClick={() => setIsOpen(false)}>
           <img src={logo} alt="Logo" width={250} height={42} loading="lazy" />
         </Link>
 
-        {/* Mobile Menu Button */}
         <button className="md:hidden text-white text-2xl" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <AiOutlineClose /> : <AiOutlineMenu />}
         </button>
 
-        {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-x-7">
           <form
             onSubmit={(e) => {
@@ -78,7 +73,7 @@ const Navbar = () => {
               placeholder="Search by tag"
               className="p-2 text-white rounded-md border-2 bg-bg2 border-gray-500 w-full"
             />
-            <div  className="absolute w-7 h-7 top-3 right-4 text-gray-500">
+            <div className="absolute w-7 h-7 top-3 right-4 text-gray-500">
               <IoIosSearch size={23} />
             </div>
             {filteredTags.length > 0 && (
@@ -96,7 +91,7 @@ const Navbar = () => {
             )}
           </form>
 
-          <GetStarted />
+          <GetStarted setIsOpen={setIsOpen}/>
 
           {token === null ? (
             <>
@@ -112,11 +107,10 @@ const Navbar = () => {
               </Link>
             </>
           ) : (
-            <ProfileDropDown />
+            <ProfileDropDown setIsOpen={setIsOpen} />
           )}
         </div>
 
-        {/* Mobile Menu */}
         {isOpen && (
           <div className="absolute top-16 left-0 w-full bg-black text-white flex flex-col items-center py-4 space-y-4 md:hidden">
             <form
@@ -148,7 +142,7 @@ const Navbar = () => {
               )}
             </form>
 
-            <GetStarted />
+            <GetStarted setIsOpen={setIsOpen}/>
 
             {token === null ? (
               <>
@@ -164,7 +158,7 @@ const Navbar = () => {
                 </Link>
               </>
             ) : (
-              <ProfileDropDown />
+              <ProfileDropDown setIsOpen={setIsOpen} />
             )}
           </div>
         )}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const GetStarted = () => {
+const GetStarted = ({setIsOpen}) => {
   return (
     <div className="relative group">
       {/* Button */}
@@ -17,13 +17,21 @@ const GetStarted = () => {
 
         {/* Links */}
         <div className="space-y-2">
-          <Link to="/projects">
+          <Link to="/projects"
+            onClick={() => {
+              setIsOpen(false);
+            }}
+          >
             <div className="p-2 hover:bg-gray-700 rounded-md">
               <p className="text-sm">Projects</p>
             </div>
           </Link>
           
-          <Link to="/uploadProject">
+          <Link to="/uploadProject"
+            onClick={() => {
+              setIsOpen(false);
+            }}
+          >
             <div className="p-2 hover:bg-gray-700 rounded-md">
               <p className="text-sm">Upload Project</p>
             </div>

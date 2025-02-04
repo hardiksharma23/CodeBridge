@@ -28,13 +28,13 @@ const CreateProject = () => {
       }
     });
 
-    console.log("Payload being sent to the backend:", formData);
+    // console.log("Payload being sent to the backend:", formData);
 
     setLoading(true);  // Set loading state
 
     try {
       await dispatch(createProject(token, formData));
-      console.log("Project created successfully");
+      // console.log("Project created successfully");
       navigate("/projects");
     } catch (error) {
       console.error("Error during project creation:", error.response?.data || error.message);

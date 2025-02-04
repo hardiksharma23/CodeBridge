@@ -14,7 +14,7 @@ export function createProject(token, formData) {
         Authorization: `Bearer ${token}`,
       });
 
-      console.log("CREATE_PROJECT_API Response:", response);
+      // console.log("CREATE_PROJECT_API Response:", response);
 
       if (!response.data.success) {
         throw new Error(response.data.message || "Failed to create project");
@@ -22,7 +22,7 @@ export function createProject(token, formData) {
 
       toast.success("Project Uploaded Successfully");
       const newProject = response.data.data;
-      console.log("Project created successfully:", newProject);
+      // console.log("Project created successfully:", newProject);
 
       return newProject; 
     } catch (error) {

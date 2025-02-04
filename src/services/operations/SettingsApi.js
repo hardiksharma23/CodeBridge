@@ -15,7 +15,7 @@ export function updateProfile(token, formData) {
           const response = await apiConnector("PUT", UPDATE_PROFILE_API, formData, {
               Authorization: `Bearer ${token}`,
           });
-          console.log("UPDATE_PROFILE_API API RESPONSE............", response)
+        //   console.log("UPDATE_PROFILE_API API RESPONSE............", response)
 
 
           if (!response.data.success) {
@@ -36,7 +36,7 @@ export function updateProfile(token, formData) {
 
           toast.success("Profile Updated Successfully")
 
-          console.log("User profile updated in Redux:", normalizedProfile);
+        //   console.log("User profile updated in Redux:", normalizedProfile);
       } catch (error) {
           console.error("Error updating profile:", error.response?.data || error.message);
           toast.error("Could Not Update Profile")
