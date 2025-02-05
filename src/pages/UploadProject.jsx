@@ -39,7 +39,7 @@ const CreateProject = () => {
     } catch (error) {
       console.error("Error during project creation:", error.response?.data || error.message);
     } finally {
-      setLoading(false);  // Reset loading state after request
+      setLoading(false);  
     }
   };
 

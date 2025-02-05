@@ -9,42 +9,104 @@ import android from '../assets/android-os.svg'
 import CodeBlocks from '../components/CodeBlocks'
 import CodeBlocks_2 from '../components/CodeBlocks_2'
 import TechSlider from '../components/TechSlider'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
 
 
 const Home = () => {
+
+    useGSAP(() => {
+      gsap.to('.stragger-box', {
+        y: 20,
+        repeat: -1,
+        yoyo: true,
+        duration: 2
+      })
+
+    }, [])
+
+    useGSAP(() => {
+      gsap.to('.stragger-mid', {
+        x: 20,
+        repeat: -1,
+        yoyo: true,
+        duration: 2
+      })
+
+    }, [])
+
+    useGSAP(() => {
+      gsap.to('.stragger-rightmid', {
+        x: -20,
+        repeat: -1,
+        yoyo: true,
+        duration: 2
+      })
+
+    }, [])
+
+    useGSAP(() => {
+      gsap.to('.stragger-bottom', {
+        y: -20,
+        repeat: -1,
+        yoyo: true,
+        duration: 2
+      })
+
+    }, [])
+
+    useGSAP(() => {
+      gsap.to('#text', {
+        ease:'power1.inOut',
+        opacity: 1,
+        x: 0,
+        delay:1
+      })
+
+      gsap.fromTo('.para', {
+        opacity: 0,
+        y: 20
+      }, {
+        opacity: 1,
+        y: 0,
+        stragger: 0.5
+      })
+    })
+
+
   return (
     <div className='mt-28'>
       {/* Hero section */}
       <div className='flex flex-col mt-3 relative mx-auto items-center'>
 
         <div className='hidden md:flex items-center justify-center'>
-          <div className='flex absolute left-10 md:left-72 top-10 border-2 bg-white p-2 rounded-lg shadow-2xl shadow-slate-50'>
+          <div className='stragger-box flex absolute left-10 md:left-72 top-10 border-2 bg-white p-2 rounded-lg shadow-2xl shadow-slate-50'>
             <img src={nextjs} alt="nextjs" className="w-[40px] md:w-[50px]" />
           </div>
 
-          <div className='flex absolute left-16 md:left-32 top-52 md:top-80 border-2 bg-white p-2 rounded-lg shadow-2xl shadow-slate-50'>
+          <div className='stragger-mid flex absolute left-16 md:left-32 top-52 md:top-80 border-2 bg-white p-2 rounded-lg shadow-2xl shadow-slate-50'>
             <img src={react} alt="react" className="w-[40px] md:w-[50px]" />
           </div>
 
-          <div className='flex absolute left-10 md:left-72 bottom-10 md:bottom-20 border-2 bg-white p-2 rounded-lg shadow-2xl shadow-slate-50'>
+          <div className='stragger-bottom flex absolute left-10 md:left-72 bottom-10 md:bottom-20 border-2 bg-white p-2 rounded-lg shadow-2xl shadow-slate-50'>
             <img src={nodejs} alt="nodejs" className="w-[40px] md:w-[50px]" />
           </div>
 
-          <div className='flex absolute right-10 md:right-72 bottom-10 md:bottom-20 border-2 bg-white p-2 rounded-lg shadow-2xl shadow-slate-50'>
+          <div className='stragger-bottom flex absolute right-10 md:right-72 bottom-10 md:bottom-20 border-2 bg-white p-2 rounded-lg shadow-2xl shadow-slate-50'>
             <img src={python} alt="python" className="w-[40px] md:w-[50px]" />
           </div>
 
-          <div className='flex absolute right-16 md:right-32 top-52 md:top-80 border-2 bg-white p-2 rounded-lg shadow-2xl shadow-slate-50'>
+          <div className='stragger-rightmid flex absolute right-16 md:right-32 top-52 md:top-80 border-2 bg-white p-2 rounded-lg shadow-2xl shadow-slate-50'>
             <img src={android} alt="android" className="w-[40px] md:w-[50px]" />
           </div>
 
-          <div className='flex absolute right-10 md:right-72 top-10 border-2 bg-white p-2 rounded-lg shadow-2xl shadow-slate-50'>
+          <div className='stragger-box flex absolute right-10 md:right-72 top-10 border-2 bg-white p-2 rounded-lg shadow-2xl shadow-slate-50'>
             <img src={mongodb} alt="mongodb" className="w-[40px] md:w-[50px]" />
           </div>
         </div>
 
         {/* Tag line */}
-        <div className='font-serif text-2xl md:text-4xl font-semibold leading-snug text-center px-4'>
+        <div className='para font-serif text-2xl md:text-4xl font-semibold leading-snug text-center px-4'>
           <p className='text-white'>
             Find <span className='bg-gradient-to-b from-[#1FA2FF] via-[#12D8FA] to-[#A6FFCB] text-transparent bg-clip-text font-bold'>projects</span>
           </p>
@@ -54,7 +116,7 @@ const Home = () => {
         </div>
 
         {/* Sample line */}
-        <div className='text-gray-400 font-serif text-center pt-4 text-sm md:text-base'>
+        <div id='text' className='opacity-0 text-gray-400 font-serif text-center pt-4 text-sm md:text-base'>
           <p>The ultimate web app to discover your perfect project</p>
         </div>
 

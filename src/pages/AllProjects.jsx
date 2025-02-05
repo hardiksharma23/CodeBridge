@@ -26,7 +26,7 @@ const AllProjects = () => {
         Projects
       </div>
 
-      {/* Just made the layout responsive without changing structure */}
+      
       <div className="flex flex-col gap-6 w-full max-w-5xl sm:px-4">
         {project && project.length > 0 ? (
           project.map((project) => (
