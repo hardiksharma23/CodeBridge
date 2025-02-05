@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { login } from '../services/operations/authAPI'
 import { MdOutlineMail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
@@ -93,9 +93,9 @@ const Login = () => {
                 <div className='space-y-4 text-sm text-center'>
                     <p className='text-gray-400'>
                         Don't have an account?{' '}
-                        <a href='/signup' className='font-semibold text-emerald-400 hover:text-emerald-300 hover:underline'>
+                        <Link to='/signup' className='font-semibold text-emerald-400 hover:text-emerald-300 hover:underline'>
                             Sign Up
-                        </a>
+                        </Link>
                     </p>
                 </div>
             </div>
