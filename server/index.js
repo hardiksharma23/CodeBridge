@@ -24,6 +24,7 @@ app.use(cookieParser());
 app.use(cors({
     origin: process.env.NODE_ENV === 'production' 
         ? [
+            'https://code-bridge-henna.vercel.app',
             'https://code-bridge-git-main-hardik-sharmas-projects-03c0716d.vercel.app', 
             'https://code-bridge-mg1img3sa-hardik-sharmas-projects-03c0716d.vercel.app',
             'https://code-bridge-56r3him1x-hardik-sharmas-projects-03c0716d.vercel.app' 
